@@ -1,7 +1,8 @@
 """
 Package for controlling the DLCPro laser controllers via a telnet connection.
-The base connection is created by using the `LaserController` class, which in
-turn provides a Python wrapper around the command and monitoring interfaces.
+The base connection is created by using the `Command` class, which in
+turn provides a Python wrapper around the telnet command interfaces.  There is a
+similar `Monitor` class available if the `rx` module is available to Python.
 
 A lower-level interaction can be found in the `telnet` package, which provides
 classes `telnet.Command` and `telnet.Monitor`, which can be used separately.
@@ -11,8 +12,9 @@ and are not intended for general use.
 The connections are logged, with loggers arranged in a hierarchy by module and
 class names, using the standard `logging` Python library.  You can set the log
 level for the whole package by doing
-    import logging
-    logging.getLogger(laser_controllers.__name__).setLevel("DEBUG")
+    >>> import logging, dlcpro
+    >>> logging.basicConfig()
+    >>> logging.getLogger(dlcpro.__name__).setLevel("DEBUG")
 (or whatever level you want), or you can use the standard methods to get finer
 control over logging.
 """
